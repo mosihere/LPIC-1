@@ -412,7 +412,7 @@ but kill %2 --> it will terminate the process ( does not forced the app )
 if we have 5 bg sleep command, and we wanna close them all
 we have to used --> killall sleep
 
-******* Tip --> if we want to find process ID of apps that start in background --> wecan use this commnad ---> 1- jobs -l
+******* Tip --> if we want to find process ID of apps that start in background --> we can use this commnad ---> 1- jobs -l
 -l switch means LONG
 
 -------------------------------PS command-----------------------------------
