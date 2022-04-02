@@ -32,7 +32,7 @@ we can use this command to copy a file at the same place :
 we can also copy multi file into another directory like below
 2- cp new newfile mostafa.txt myjob --> all of the files will copy to last directory --> it means just the last name(must be directory) will copy all files in itself .
 
----------------------------------Move---------------------------------------
+-----------------------------------Move--------------------------------------
 we can cut and paste a file with new name use 'mv' command -->
 mv new old --> it will change the name of new file to old with all content
 
@@ -43,7 +43,7 @@ it will cut and paste the three files and move them to the mydir direcroty !
 by the way we can change the names of file or directory with mv commnad -->
 3- mv mydir mydirecotry --> mydir name changed to mydirectory with all contents
 
-------------------------------Remove----------------------------------------
+-----------------------------------Remove--------------------------------------
 we can remove file and directory with this command -->
 rm myfile --> remove the file // rmdir mydir --> will remove our directory
 
@@ -74,7 +74,7 @@ Another Important Switch for Copy --> -p -> cp -p first second --> it will save 
 
 -f is default and force the file to overwrite without permission
 
---------------------------work with ls in advanced level--------------------
+-----------------------------------Work with ls in advanced level--------------------------------------
 we can use * to select all files or we can use it like this
 1-cp f* test --> copy all files start with f and copy them to test directory
 2-cp f*p test --> copy all files start with (f) and end with (p)
@@ -104,7 +104,7 @@ special advanced mode --> to use date of a file to another file -->
 2- touch -r mostafa.txt equlizer.srt --> it will change the second file date with first file --> for example if first file date is 8 septemper
 and second is 20 septemper --> second will be 8 septemper too !
 
---------------------------------find---------------------------------------
+-----------------------------------Find--------------------------------------
 we can use this command to find all files and directory start with special character
 -iname switch is stands for inSensitive name --> find both a-A ...
 find -iname 'f*'
@@ -158,7 +158,7 @@ it'll find all files end by .jpg and make them execute and finally run the file 
 file also has a special switch that call -i --> file -i mydir
 -i stands for (mime) so it describe how it understood what kinda file is it !
 
------------------------------------ Compressing file -----------------------------------------
+-----------------------------------Compressing File--------------------------------------
 1- gzip <fileName> --> compress our file to .gz
 tu unzip that we have to use -> gunzip <fileName>
 
@@ -185,7 +185,7 @@ we have to use --> gunzip myArchive.tar.gz
 and finaly use this command --> tar rfv (newFile that we want to append)
 
 
-------------------------------CPIO------------------------------------------
+-----------------------------------CPIO--------------------------------------
 we want to archive some files into one and we can open it later
 the command is like this bellow : we are in a directory with some files:
 1- ls | cpio -o > cpioArchive
@@ -198,7 +198,7 @@ how to extract the cpio file -->
 -id switch is stands for ( i == input , d == directory ) if we don't use d it won't open directory defaultly
 
 
----------------------------------dd command---------------------------------
+-----------------------------------dd Command--------------------------------------
 dd is something like copy but it's much more complete For Instance :
 1- dd if=myArchive.tar of=newfile
 it will copy all data of if to of (if == Input File / of == OutPut File)
@@ -223,7 +223,7 @@ it'll fetch data from zero directory or file and write it in a single 100MB Bloc
 
 
 
-------------------------Stdin--Stdout--Stderr-------------------------------
+------------------------Stdin--Stdout--Stderr-----------------------------------
 stream input --> every data we declare such as keyboard typing and etc ..
 stream output --> every output that we see in shell like ls command 
 stream error --> every error that we see in terminal such as ls x* > if there is no file start with x , then we see an error
