@@ -48,7 +48,7 @@ we can remove file and directory with this command -->
 rm myfile --> remove the file // rmdir mydir --> will remove our directory
 
 Hint --> if we want to create a nested directory for example create a mydir/test/mostafa --> we can't use mkdir mydir/test/mostafa
-we have tp used -p switch to do that (-p means parent it will create directories in parent easily)
+we have to used -p switch to do that (-p means parent it will create directories in parent easily)
 mkdir -p mydir/test/mostafa
 
 tip --> we can back directory two or second time with this command -->
@@ -70,7 +70,7 @@ we can use -b switch to make a backup -->
 cp -b test test_2 ---> it will create a new file named test_2~ (~ means back up)
 and then overwrite the first file in second file
 
-Another Important Switch for Copy --> -p -> cp -p first second --> it will save the detail of attribites like -> Date - Time - access
+Another Important Switch for Copy --> -p -> cp -p first second --> it will save the detail of attributes like -> Date - Time - access
 
 -f is default and force the file to overwrite without permission
 
