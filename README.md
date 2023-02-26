@@ -1176,6 +1176,481 @@ using shell command:
 
 ## Partitions
 
+> fdisk -l /dev/sda
+
+l switch stands for list (will print data about our hard disks).
+
+**Tip**: fdisk is a dangerous command.
+
+> fdisk /dev/sda
+
+will open danger zone :))
+
+we can format partition remove them or add them, change the format of them and etc.
+
+if we want to delete a partition:
+
+> sudo fdisk /dev/sda
+
+**m** -> use for help.
+
+**d** -> remove the partition.
+
+**n** -> create a new partition.
+
+for format a partition we have to use:
+
+> sudo mkfs -t ext4 -L Movies /dev/sda1
+
+(Make File System 't' stands for TYPE --> ext4 --> L switch stands for Label
+
+but for format a partition for SWAP we have to use:
+
+> sudo mkswap /dev/sda1
+
+**Tip**: we can check all formates in our linux:
+
+> ls /sbin/mk*
+
+### What is UUID:
+Universal Unique ID --> it's a id that always same and not changeable.
+
+check UUID of Hardware like Hard Disk:
+
+> blkid /dev/sda1
+
+for GPT system NOT MBR ---> we can use gdisk instead of fdisk
+
+> gdisk /dev/sda
+
+<br>
+
+## du & df
+
+### Disk Free
+df will show us "Disk Free" space:
+
+> df -h (-H)
+
+h means human and H is also mean human too but -H is better because it calculate as 1024 not 1000.
+
+> df -TH
+
+Disk Free Space TYPE and Human Readable.
+
+> df -ih
+
+ i means inode,  "Inodes keep some infromation about Files".
+
+**Tip**: vfat format doesn't have any inodes (like efi boot system) it manes vfat doesn't know when file edited or when it opens who is the owner and etc.
+
+### DISK USAGE
+
+> du -H . /tmp
+
+ it will check the disk usage both the directory we stand and the /tmp directory.
+
+important switches for "du" command:
+
+-c -h -H --max-depth=1 -s  -c means caclucalte the total disk usage.
+
+> du myProject/instabot -H -c
+
+ will show us the total and also one by one files that used our disk.
+
+> du -H -C --max-depth=1
+
+ this command won't show us all nested direcotories one by one instead of that it'll show just parent directory and usage of all childrens of that directory.
+
+> du -hs 
+
+will give us a summary human readable summary.
+
+for example :
+
+> du -hs myProject
+
+ (500MB)
+
+if we wanna find big files that used most of our usage -> we have to use sth like this bellow:
+
+> du -h --max-depth=2 | grep G M
+
+ ( GB or MB Use one of them )
+
+**Tip**: what is **journal file system** --> it's something like a journal letter.
+
+if the system break or light off in a sudden the system will break ! right ? but the journal will remember what we had done before.
+
+for example if we modified an important file system and suddenly lights off, actually we have to face some problems, the journal in files will fix this problem and it remember what should computer to and what did the system done and that's not complete yet !
+
+**CONCLUSSION** --> A journal differs from a simple {log}.
+
+in that the contents of the journal can be used to reconstruct the state of the system after a failure by re-applying the transactions in the journal to a snapshot of the system previous state.
+
+**Hint**: ext2 and fat are not journalling but ext3 ext4 are journalling.
+
+<br>
+
+## Mount
+
+> sudo mount /dev/sda1 /media/mosihere/
+
+it will mount hard sda1 in media/mosihere, it means if we have 2 linux in our hard drive the second linux mount in our main and in used linux --> (We Mount A Partition in a Directory).
+
+if we want to unmount this again:
+
+> umount /media/mosihere/
+
+or
+
+> sudoumount /dev/sda1
+
+**Tip**: it's better to mount stuffs in a empty directory, because when we mount things in a directory till we unmount that we can't see our real files and stuffs in directory.
+
+famous switches for mount command are:
+ 1. -t ext4 (stands for type)
+ 2. -o ro ( o stands for options and ro means with READ ONLY option mount this **rw** means read and write.
+
+> sudo mount -o remount,ro /dev/sda1 /media/mosihere/
+
+it means mount with option and remount again if it already mounted and start it in read only mode.
+
+**Tip**: we can't unmount a hardware or whatever when we stand in that directory. 
+
+**solution**:
+
+we have to leave that directory then use --> sudo umount /dev/sda1
+
+**hint**:  mount command will show all mounted stuffs in our systems:
+
+> mount
+
+<br>
+
+## Swap
+
+with command:
+
+> sudo swapon -a
+
+start our swap partition, also we can turn it off with:
+
+> sudo swapoff -a
+
+**Tip**: we can check our memory usage and much more things with (top) command:
+
+> top
+
+> swapon -s
+
+ will show us the partition of our swap, for example:
+ 
+ dev/sda5 type = partition / size = 8GB / used = 0 / priority= -1
+
+<br>
+
+## Manage File-Permission and Ownerships
+
+when we create a file if we use:
+
+> ls -l
+
+ we can see the owner of file.
+
+group of user and another persons in system.
+
+something like this:
+> -wr-wr-r--
+
+1. first wr means write and read for User (Me)
+2. second is for group (for example Mosihere Group )
+3. third one is for all another persons that not in any group
+
+ok ! now we want to create a shell.sh:
+
+> vim hello.sh
+
+#!/bin/bash
+it'll be run with bin bash
+
+> echo 'hello'
+
+now if we run it:
+
+>sh hello.sh
+
+now we wanna make it execute to run it we have to use:
+
+> chmod u+x hello.sh
+
+it means give the permission to user to execute.
+
+now if we again use:
+> ls -l hello.sh
+
+we'll see the output like this:
+
+-rwxrw-r-- (it means user access the execute).
+
+and ofcourse now we can run the hello.sh directry in terminal like this :
+
+> ./hello.sh
+
+**Tip**: if we want to remove the access of user to execute we have to use this command:
+
+>chmod u-x hello.sh
+
+ (remove the execute for user).
+
+> chmod ug+x hello.sh
+
+ (change mod of user and group of user to access the execute)
+
+> chmod o-r hello.sh
+
+(others don't have permission to read this file).
+
+> chmod o=wr hello.sh
+
+(it means add read and write for others)
+
+> chmod o=r,g=r,u=wrx hello.sh
+
+(others can read , group can read, user can read and write and execute)
+
+in another way ( technical way ) we can use octal numbers (8):
+
+rwx 7
+
+rw- 6
+
+r-x 5
+
+r-- 4
+
+-wx 3
+
+-w- 2
+
+--x 1
+
+--- 0
+
+chmod < number for user > < number for group > < number for others > hello.sh
+
+> chmod 754 hello.sh
+ 
+(it means user can write read and execute/ group can read and execute / and others can just read).
+
+**Access mode**: sometimes we can access sth dangerous without permission like this:
+
+> ls -l /usr/bin/passwd
+
+ we can see -rwsr-xr-x
+
+this **s** means SUID --> (Set User ID)
+
+> chmod u+s hello.sh
+ 
+ will set SUID for hello.sh.
+
+it means anyone run this command, the command run with user root, not that guy access.
+
+**Tip**: if you use this command:
+> ls -ld /tmp
+
+(d switch is stands for directory, not the files in that directory) you'll see sth like this:
+
+drwxrwxrwt --> what is **t** ? ( it means Sticky Bit )
+
+with set sticky bit we let users can't erase others directory and files.
+
+#### in the end we have 3 access mode:
+
+
+|        < access mode >        |< octal >                          |< symbolic >                         |
+|----------------|-------------------------------|-----------------------------|
+|SUID |            4000            |u+s            |
+|GUID          | 2000            |g+s            |
+|Sticky          |1000| t      |
+
+<br>
+
+#### How to change the Owner and Groups:
+
+chown command will help us
+
+> chown mosi:adm hello.sh
+
+(it means change the owner to mosi and the group is adm)
+
+#### important switch for chmod and chown:
+
+-R that stands for Recursive.
+
+> sudo chown -R mosihere:mosihere /home
+
+(it means change the owner of home and all directories files and sub directories to mosihere and the group is mosihere too).
+
+<br>
+
+## Hard Link & Soft link (symbolic)
+
+> ls -i
+
+(will list our inodes)
+
+> ls -il
+
+(will list items and inodes of them)
+
+when we copy a file with new name --> the inodes of them are different
+
+but if we exactly want to link 2 files and inodes of them are same too, we have to use **LN** command --> for example we want to copy file.txt to file2.txt --> inodes are different you can check with:
+
+> ls -li
+
+**solution**:
+
+> ln myfile.txt hardlink.txt
+ 
+ now ls -li will show both inodes same.
+
+**CONCLUSION**: copy will create a new file with the same stuffs.
+
+but link will refered to a same file at all --> 2 name will refer to same place --> copy is little different 2 files refer 2 to place with same content.
+
+**for instance**: we have 3 files:
+
+first our original file 
+second is copy of the original
+and third is link of original
+
+original.txt / 2-copy.txt / 3.hardlink.txt
+
+first we use:
+> cp original.txt copy.txt
+
+then:
+
+> ln original.txt hardlink.txt
+
+now if we write something instead of previous content of original file and cat the link.txt --> the hardlink.txt will update soon, but copy.txt still contain previous content.
+
+> unlink hardlink.txt
+
+will remove hardlink.txt.
+
+### Soft Link:
+we have to use -s Switch ( -s Stands for Soft Link )
+
+we can easily create a softLink like this bellow:
+
+> ln -s original.txt softLink.txt
+
+if we use:
+> ls -il
+
+we'll see a softLink.txt use a arrow to refer to original.txt and here is the point, the inodes are different.
+
+now the Question is, why when we have hardlink, use softlink again ?
+
+**answer**: we can't create hard link between 2 device or 2 partition and etc.. because the inodes from one device is different from another.
+
+in this situation we have to use softlink that create a new file with unique inodes and also can share between 2 partition or 2 devices.
+
+**Hint**: if we want to create a softlink in an inner directory, we have to use "Relative Path" --> it means full path look example bellow:
+
+> ln -s original.txt myDir/
+
+it will create a soft link file with in broken type --> it means it has error --> solution is:
+
+> ln -s ../original.txt .
+ 
+it means create a softLink from outer directory with original.txt name and create it here where I'm stand.
+
+#### but what if we wanna make a link to a 'Directory':
+
+we can't use hard link at all.
+
+so we can use sth like this -->we have a directory named myDir and etc...
+
+> ln -s myDir LinkedDir
+
+it will create a LinkedDir and all data in myDir are also exist in LinkedDir.
+
+**Trick**:  we can find all files in system like this:
+
+> find / -type l 
+
+find all files are softlink from root.
+
+<br> 
+
+## Find system files and place files in correct location
+
+**FHS** ( File Hierarchy Standard ) --> selsele maratebie standard.
+
+**bin** --> Essential Command Binaries.
+
+**boot** --> Static files of the boot loader.
+
+**dev** --> Device Files.
+
+**etc** --> Host-Specific system configuration.
+
+**lib** --> Essential shared libraries and kernel modules.
+
+**media** --> Mount point for removable Media.
+
+**mnt** --> Mount point for mounting a filesystem temporarily.
+
+**opt** --> Add-on application software packages.
+
+**sbin** --> Essential system binaries.
+
+**srv** --> Data for services provide by this system.
+
+**tmp** --> Temporary Files.
+
+**usr** --> Secondary Hierarchy.
+
+**var** --> variable Data.
+
+**home** --> User Home Directory (Optional).
+
+**lib** --> Alternate Format essential shared libraries (Optional).
+
+**root** --> Home Directory for the root user ' / ' (Optional).
+
+<br>
+
+## Tricks
+
+> which ls
+
+ will tell us how the command run.
+
+> which -a ping
+
+stands for all path.
+
+> type root
+
+ it's better than which.
+
+> whereis ping
+
+> locate kernel 
+
+is too fast.
+
+#### why too fast:
+it has a trick because **locate** work with a **offline DataBase** and it'll create a data base and find from there !
+for updating that data base we have to use 'sudo updatedb' manually or
+it will make backup once a day.
+
 ## Contribution
 Try to help fixing any **misspelling**, **bad grammar** or  **unmentioned tips** for this section! <br>
 **Pull requests are welcome :)**
