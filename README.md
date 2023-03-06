@@ -35,6 +35,7 @@
 - [Tricks](#tricks)
 - [Contribution](#contribution)
 
+---
 
 Check the **details** of a file with:
 > ls -ltrh file_name
