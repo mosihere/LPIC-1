@@ -8,7 +8,7 @@
 - [Touch](#touch)
 - [Find](#find)
 - [File](#file)
-- [Compressing File)[#Compressing-File)
+- [Compressing File)(#Compressing-File)
 - [Archive Files with Tar](#Archive-Files-with-Tar)
 - [CPIO](#cpio)
 - [DD](#dd)
