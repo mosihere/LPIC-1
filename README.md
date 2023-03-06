@@ -1531,7 +1531,7 @@ chown command will help us
 
 <br>
 
-## Hard Link & Soft link (symbolic)
+## Hard Link & Soft link
 
 > ls -i
 
