@@ -906,6 +906,7 @@ it used for find out how much memory is free !
 the famous switches for that are:
 
 > free -g
+
 > free -m
 
 **m** stands for **MB** and **g** stands for **GB**
