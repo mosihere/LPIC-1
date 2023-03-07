@@ -55,6 +55,7 @@ Use this command to copy a file at the same place :
 >  cp test.txt copyTest.txt 
 
 <br>
+
 We can also **copy multiple files** into another directory like below:
 
 > cp new newfile mostafa.txt myjob
@@ -64,16 +65,17 @@ We can also **copy multiple files** into another directory like below:
 ---
 
 **Convert** a file like this:
-> convert ~/Pictures/screenshot.png screenshot.gif
+``` convert ~/Pictures/screenshot.png screenshot.gif ```
 
 ---
 This act like **Double-click** on a file:
- >  xdg-open < file name >
+``` xdg-open < file name > ```
+
 ---
 
-- Check the **format** of a file with **ascii**, **hex** and etc:
+Check the **format** of a file with **ascii**, **hex** and etc:
 
-> od -a < fileName > | head
+``` od -a < fileName > | head ```
 
 **Tip** -->  **head** shows 10 first lines of a file!
 
@@ -81,7 +83,7 @@ This act like **Double-click** on a file:
 
 We can use **hexedit** to edit the signature of a file (change the file format to encrypt and interrupt that) 
 
-> hexedit < fileName >
+``` hexedit < fileName > ```
 
 - **F1** to show help
 - **F2** to save
@@ -90,7 +92,7 @@ We can use **hexedit** to edit the signature of a file (change the file format t
 ---
 
 Open the file:
-> feh < file_name >
+``` feh < file_name > ```
 
 <br>
 
@@ -98,20 +100,20 @@ Open the file:
 
 **Rename** a file:
 
-> mv old.txt new.txt
+``` mv old.txt new.txt ```
 
 - it will change the name of new file to old with all content
 <br>
 
 Move **Multiple files** at once:
 
-> mv old test tips mydir/
+``` mv old test tips mydir/ ```
 
 <br>
 
 Rename **Directories**:
 
-> mv mydir mydirecotry
+``` mv mydir mydirecotry ```
 
 <br>
 
@@ -119,31 +121,31 @@ Rename **Directories**:
 
 **Remove Files**:
 
-> rm myfile
+``` rm myfile ```
 
 **Remove Directory**
 
-> rmdir mydir
+``` rmdir mydir ```
 
 
 **Hint** --> if we want to **create a nested directory** for example create a mydir/test/Mosihere, we can't use mkdir mydir/test/mostafa
 
 we have to used -p switch to do that (-p means parent it will create directories in parent easily)
 
-> mkdir -p mydir/test/mostafa
+``` mkdir -p mydir/test/mostafa ```
 
 **Tip** --> we can back directory two or second time with this command:
 
-> cd ../../..
+``` cd ../../.. ```
 
 **Hint** --> we can't remove a directory that has a file or another directory
 we need to use -r switch to recursively delete directory and items in it.
 
-> rm -r myDirectory/
+``` rm -r myDirectory/ ```
 
 We can't **copy a directory to another directory** we have to use -r switch
 
-cp -r mydir seconddir
+``` cp -r mydir seconddir ```
 
 <br>
 
@@ -153,17 +155,17 @@ If we copy a file to another existing file the second file will be **lost conten
 
 **Solutions** --> use -i switch to interactive
 
-> cp -i first second
+``` cp -i first second ```
 
 we can use -b switch to make a **backup**:
 
-> cp -b test test_2
+``` cp -b test test_2 ```
 
 it will create a new file named test_2~ (~ means back up)
 
 Another Important Switch for cp command is **-p**
 
-> cp -p first second
+``` cp -p first second ```
 
 it will save the **detail of attributes** like -> Date - Time - access
 
@@ -177,30 +179,30 @@ Use **\*** to select all files or we can use it like this:
 
 copy all files start with f and copy them to test directory
 
-> cp f* test
+```cp f* test```
 
 copy all files that starts with (f) and end with (p)
 
-> cp f*p test
+```cp f*p test```
 
 Using question mark (?)
 which means all files start with f and has one character after that !
-> ls f? 
+``` ls f? ```
 
 means all files that start with f and has 2 more character !
-> ls f??
+```ls f??```
 
 it means all files start with f and one more character and end with everything else ( it means it need more than on character )
 
-> ls f?* --> 
+```ls f?*``` 
 
 
 **Hint** --> we can use:
-> ls [ab]* 
+```ls [ab]*``` 
 
  which means all files and directories start with (a) or (b) and end with every char with every length.
 
- > ls ?[a1]*
+```ls ?[a1]*```
  
  show all files and directories that start with one character and second char is (a) or (1) and everything after that ...
 
@@ -214,18 +216,18 @@ if that **doesn't exist** -> it will create a new file.
 
 we can also use switch to handle touch
 
-> touch -d yesterday test.txt
+```touch -d yesterday test.txt```
 
 **-d** stands for **date**
 
  if we want to write a longer string that needs spaces we have to use qutation:
- > touch -d '6 october 1998' myfile
+ ```touch -d '6 october 1998' myfile```
 
 **-t** stands for **time stamp**:
-> touch -t 202008101510.59 myfile
+```touch -t 202008101510.59 myfile```
 
 special advanced mode --> to use date of a file to another file:
-> touch -r first-file.txt second-file.txt
+```touch -r first-file.txt second-file.txt```
 
 **-r** Switch stands for **Reference of date**.
 
@@ -237,7 +239,7 @@ it will modify the second file creation date with first file --> for example if 
 
 we can use this command to find all files and directory that starts with special character.
 
-> find -iname 'f*'
+```find -iname 'f*'```
 
 **-iname** switch is stands for **inSensitive name** --> find both a-A ...
 
@@ -245,60 +247,60 @@ find all files and directories that start with f and end with everything
 
 if we want to find **directory** we have another switch like this:
 
-> find home/mosihere/myProject/python -type d -iname 'f*'
+```find home/mosihere/myProject/python -type d -iname 'f*'```
 
 find just files start with (d)
-> find . -type f -iname 'd*'
+```find . -type f -iname 'd*'```
 
 
 **Tip** --> find by size:
 
->find . -size 0
+```find . -size 0```
 
 **Hint** --> we also have **-empty** switch to find 0 bite files:
 
-> find . -empty
+```find . -empty```
 
  100 bites or 100 character
  
-> find . -size 100b
+```find . -size 100b```
 
 find all files with more than 1GB
 
-> find . -size +1G
+```find . -size +1G```
 
 and ...
-> find . -size 100k
-> find . -size 100m
+```find . -size 100k```
+```find . -size 100m ```
 
 <br>
 
 **Find Files** with three more ways:
 
 1. (access time) last time we read file.
-> find . -atime
+```find . -atime```
 
 2. (change time) when we change the user or we change the date or change the user ( not only change the real data of file).
 
-> find . -ctime
+```find . -ctime```
 
 3. (modify time) we exactly change the data in the file.
 
-> find . -mtime
+```find . -mtime```
 
 fetch us the files that access in 6 * 24 hours --> like 6 days ago --> we also can use +6 or -6 or just exactly 6
 
-> find . -atime 6 --> 
+```find . -atime 6``` 
 
 we also can find files with **Minutes** !
 
 find all that has been accesed in last 60 min.
 
-> find . -amin -60
+```find . -amin -60```
 
 1. **-amin** --> **'access minutes'**
-2. **-mmin** --> **'modify minutes' **
-3. **-cmin** --> **'change minutes' **
+2. **-mmin** --> **'modify minutes'**
+3. **-cmin** --> **'change minutes'**
 
 **Hint**:  if we want to do it in a most simple way, we should use  **-daystart** switch instead -amin or -mmin or -cmin
 
@@ -306,15 +308,15 @@ we also can use **-ls**  right after find command:
 
  find all files in this directory that access in last 2 hours and then list them
  
-> find . -amin -120 -ls 
+```find . -amin -120 -ls``` 
 
 or we can use **-print** instead of -ls
 
-> find . -amin -120 -print
+```find . -amin -120 -print```
 
 **Tip** --> we can find our needed files and make change on them like this:
 
-> find . -iname '.htm*' -exec mv '{}' '{}l' \;
+```find . -iname '.htm*' -exec mv '{}' '{}l' \;```
 
 it means find all files named .htm and execute them (execute used for access the another command like 'mv') so move them (here means rename) {} all u find into all u find just append 'l' to them finaly all htm files changed to html files.
 
@@ -324,7 +326,7 @@ it means find all files named .htm and execute them (execute used for access the
 
 Check **details** of a file:
 
-> file equlizer.srt
+```file equlizer.srt```
 
 for example in windows we can just check the .jpg or .mp4 and etc.. to find out what this file is !?
 
@@ -332,13 +334,13 @@ but in linux we can check them and really find out what's happen !
 
 Check this example below:
 
-> find . -iname '*jpg' -exec file '{}' \;
+```find . -iname '*jpg' -exec file '{}' \;```
 
 It'll find all files end by **.jpg** and make them execute and finally run the file command on each of them and list them!
 
 file also has a special switch that and it is  **-i**
 
->file -i mydir
+```file -i mydir```
 
 **-i** stands for **mime** so it describes what kind of file it is !
 
@@ -352,7 +354,7 @@ file also has a special switch that and it is  **-i**
 
 to make a zip file:
 
-> gzip < fileName >
+```gzip < fileName >```
 
  to **unzip** file:
 
@@ -364,10 +366,10 @@ to make a zip file:
 
 To make a zip file:
   
-  > bzip2 < fileName >
+```bzip2 < fileName >```
 
 To unzip a zip file:
-> bunzip2 < fileName >
+```bunzip2 < fileName >```
 
 <br>
 
@@ -376,23 +378,23 @@ To unzip a zip file:
 
 **Archive files** means make all files into one big file.
 
-> tar cf myArchive.tar (filesName)
+```tar cf myArchive.tar (filesName)```
 
 **Hint** --> but if we wanna create a file and **zip** that immediately we have to use this switch:
 
-> tar cfz myArchive.tar *
+```tar cfz myArchive.tar *```
 
 **Tip** : If we want to see **which files are compress** we can use this switch:
 
 (Create File Zip Verbos)
 
-> tar cfzv myarchive.tar *
+```tar cfzv myarchive.tar *```
 
 <br>
 
 #### How to open a archive .tar file:
 
->tar xf myArchive.tar
+```tar xf myArchive.tar```
 
 it will (xf switch is stand for Extract File ) open the archive file and after that delete the compress file
 
@@ -400,10 +402,10 @@ it will (xf switch is stand for Extract File ) open the archive file and after t
 
 we should first of all with (mv) change the .tar to .tar.gz and next we have to use:
 
-> gunzip myArchive.tar.gz
+```gunzip myArchive.tar.gz```
 
 and finaly use this command:
-> tar rfv (newFile that we want to append)
+```tar rfv (newFile that we want to append)```
 
 <br>
 
@@ -413,7 +415,7 @@ we want to archive some files into one and we can open it later
 
 the command is like this bellow:
 
-> ls | cpio -o > cpioArchive
+```ls | cpio -o > cpioArchive```
 
 first we want a list of files of our directory and then with pipe ( | ) we send our data to cpio --> the -o switch means OutPut
 
@@ -421,7 +423,7 @@ finally we send output to a < fileName >
 
 #### how to extract the cpio file
 
-> cpio -id < cpioArchive
+```cpio -id < cpioArchive```
 
 **-id** switch is stands for 
 - i == input   d 
@@ -435,7 +437,7 @@ if we don't use d it won't open directory as default.
 
 dd is something like copy but it's much more complete For Instance:
 
-> dd if=myArchive.tar of=newfile
+```dd if=myArchive.tar of=newfile```
 
 it will copy all data of if to of 
 - if == Input File
@@ -447,7 +449,7 @@ but we can do more than this with dd command for example we can directly
 
 like this:
 
-> sudo dd if=archlinux-2020.05.01-x86_64.iso of=/dev/sdb bs=4096
+```sudo dd if=archlinux-2020.05.01-x86_64.iso of=/dev/sdb bs=4096```
 
 it means our input file is arch iso and our input file is our USB and finally
 
@@ -457,19 +459,19 @@ it means our input file is arch iso and our input file is our USB and finally
 
 #### Creating a backUp:
 
-> dd if=dev/sda1/ of=backupsda1.dd bs=4096
+```dd if=dev/sda1/ of=backupsda1.dd bs=4096```
 
 #### Restore backup:
 
 that's easy, just use if instead of and vice versa
 
-> dd if=backupsda1.dd of=/dev/sda1 bs=4096
+```dd if=backupsda1.dd of=/dev/sda1 bs=4096```
 
 <br>
 
 #### create a file with 100MB with dd
 
-> dd if=/dev/zero of=1g.test bs=100M count=1
+```dd if=/dev/zero of=1g.test bs=100M count=1```
 
 it'll fetch data from zero directory or file and write it in a single 100MB Block with name of 1g.test --> count=1 means 1 time 100MB Block created
 
@@ -482,7 +484,7 @@ it'll fetch data from zero directory or file and write it in a single 100MB Bloc
 2. **stream output**: every output that we see in shell like ls command.
 
 3. **stream error**: every error that we see in terminal such as:
- > ls x*
+```ls x*```
  
   if there is no file start with x , then we see an error.
 
@@ -490,7 +492,7 @@ it'll fetch data from zero directory or file and write it in a single 100MB Bloc
 
 if this command raise an error for example ls x* --> there is no file that start with x !
 
-> ls x* m* 2> error 1> listFile
+```ls x* m* 2> error 1> listFile```
 
 now we can < cat > error to see the error if there is an error.
 
@@ -508,7 +510,7 @@ if we don't use any number between these three ! terminal set **0** as default
 
 for example --> ls > mylist ( will contains data output in mylist and it means as default it use 1 (stdout)
 
-*** Hint *** as default when we use this method --> ls a* > myfile
+**Hint** as default when we use this method --> ls a* > myfile
 
 each time we use this command the data will overwrite
 
@@ -516,7 +518,7 @@ but what if we wanna just append the new data to other ?
 
 **solution is**:
 
-> ls m* >> myfile
+```ls m* >> myfile```
 
 when we use double arrow it means **append**!
 
@@ -533,13 +535,13 @@ we call all these **Redirect**.
 **&>** it's a cool shortcut.
 
 **for instance**:
-> ls x* a* &> myStream
+```ls x* a* &> myStream```
 
 It'll send both output(stdout'1') and error(stderr'2') to the myStream File.
 
 if we don't use this shortcut we have to use this long command bellow :
 
-> ls x* a* 1> myStream 2> mystream
+```ls x* a* 1> myStream 2> mystream```
 
 Another ShortCuts are (( &0 &1 &2 ))
 
@@ -547,7 +549,7 @@ it means right there that the data is send
 
 lemme crystallize that for you:
 
->ls x* a* > output 2> 1&
+```ls x* a* > output 2> 1&```
 
 it exactly means check every file start with **x** or **a** and print output in output file and if there is an error, send the error to the (stdout) path
 
@@ -560,11 +562,11 @@ it exactly means check every file start with **x** or **a** and print output in 
 
  every data that send here are going to hell and they will be lost, sounds odd :)) !
 
-> /dev/null
+```/dev/null```
 
 that's it:
 
-> ls -R / x* > /dev/null 2> myError
+```ls -R / x* > /dev/null 2> myError```
 
 it will create a recursively list of all root system and ofc there are so many files and directory !
 
@@ -572,13 +574,13 @@ we won't see the list and we just parse raised error and manage them seprately, 
 
 #### How to control stream of data in input :
 
->  tr ' ' ',' < file.txt
+```tr ' ' ',' < file.txt```
 
  < tr > means **translate** all spaces in file.txt and use comma instead of space !
 
 with this method we can create a unique keyword and control our stream(input) like this:
 
->tr ' ' '-' << END_OF_DATA
+```tr ' ' '-' << END_OF_DATA```
 
 when we use this command, shell wait for us to give the data and we can type whatever we want and finally when we use the unique key again, the input going to close soon !
 
@@ -590,7 +592,7 @@ Pipe --> ( | ) will send the **output of first** command to **input of second** 
 
 for instance:
 
-> sort fileX | cat fileY - fileZ
+```sort fileX | cat fileY - fileZ```
 
 it means first of all sort file x
 
@@ -600,25 +602,25 @@ finally it will cat fileY first then sorted fileX and last cat FileZ
 
 #### sort a file and cat that:
 
-> cat howcool | sort 
+```cat howcool | sort ```
 
 or we can simply use this:
 
->sort howcool
+```sort howcool```
 
 or use:
 
->sort < howcool
+```sort < howcool```
 
 but some command like <tr> **doesn't accept** this operand
 
 we must use a input for that
 
-> tr 'j' '*' < howcool 
+```tr 'j' '*' < howcool ```
 
 or
 
-> cat howcool | tr 'j' '*'
+```cat howcool | tr 'j' '*'```
 
 <br>
 
@@ -634,7 +636,7 @@ but we can't !
 
 we have to use this:
 
-> -ls | xargs echo these are my files
+```-ls | xargs echo these are my files```
 
 **XARGS** put all input data to next command after itself !
 
@@ -655,7 +657,7 @@ all we have to do is:
 
 ok lets start:
 
-> find . -name- 'a*' -type f | xargs rm
+```find . -name- 'a*' -type f | xargs rm```
 
 find files from here, name start with **a** and type of them must be Files --> send them to xargs, xargs pass them to rm and finally remove all of them
 
@@ -665,7 +667,7 @@ we also can use:
  **-n 2** instead of **--max-args 2**
 
 command:
-> xargs --max-args 2 echo myfiles are << END
+```xargs --max-args 2 echo myfiles are << END```
 
 job
 
@@ -684,7 +686,7 @@ my files are github games
 -L Switch is also use for line --> if we type 5 files in a line and then use Enter --> this switch will print 5 files name and then start again for next line
 
 more simpler command is:
-> ls | xargs --max-args echo 3 Files Are:
+```ls | xargs --max-args echo 3 Files Are:```
 
 it will send the ls command to xargs -> xargs with switch max args 3
 
@@ -697,7 +699,7 @@ Files Are --> 4 5 6
 etc ...
 
 now another switch is -I < keyword >:
-> ls | xargs -I INPUT echo the name is INPUT and it is fun
+```ls | xargs -I INPUT echo the name is INPUT and it is fun```
 
 **HINT**: here -I is used with a keyword (INPUT) and every Where we use INPUT the file name is going to fill that !
 
@@ -707,11 +709,11 @@ we want to copy files start with number to another directory (named number) with
 
 first of all we find them like this:
 
-> find . -name '[0-9]*'
+```find . -name '[0-9]*'```
 
 then pass it to xargs with switch -I and use mv command after xargs
 
-> find . -name '[0-9]*' | xargs -IX mv X number/
+```find . -name '[0-9]*' | xargs -IX mv X number/```
 
 it will move all files start with number to /number directory.
 
@@ -730,7 +732,7 @@ it will move all files start with number to /number directory.
 we can use this command to see the **details** of **standard input live** in the **shell**.
 
 for instance:
-> ls | tee fileout
+```ls | tee fileout```
 
 will send the stdout to fileout File and also print it in the shell, it's similar to redirect data to some file and cat that file.
 
@@ -746,7 +748,7 @@ how to start process in background and etc.
 
 with  **&**  after every command we can **run that in background**
 
-> sleep 100 &
+```sleep 100 &```
 
  ( pc sleep for 100 secs)
 
@@ -758,35 +760,35 @@ later we can start it again and unfreeze that.
 
 **hint**:  we can check app or commands those work in background with this command :
 
-> jobs
+```jobs```
 
 we can start,  stopped(freeze) process in background  with this command:
 
-> bg
+```bg```
 
 with fg command we can bring background running program to forground
 
-> fg 
+```fg``` 
 
 for crystallize look at the example bellow :
 
-> sleep 1000 &
+```sleep 1000 &```
 
 pc will sleep for 1000 seconds in background because of &
 
 and we can fetch it from background to forground with this command :
 
-> fg %2
+```fg %2```
 
  if it's the second program that run in background
 
 we also can use:
 
-> kill all
+```kill all```
 
  or
  
->  kill %2
+```kill %2```
 
 <br>
 
@@ -796,7 +798,7 @@ we can use this command to **run programes in background after log out and shutd
 
 like this:
 
-> nohup sleep 1000 &
+```nohup sleep 1000 &```
 
 it will create a file named **nohup.out** so we can check it later.
 
@@ -804,13 +806,13 @@ it will create a file named **nohup.out** so we can check it later.
 
 we can use this command to check all "nohup" program
 
-> ps -ef | grep sleep
+```ps -ef | grep sleep```
  
  it will show us all sleep command that used before and continue in background
 
 **Tip**: we also can use this method:
 
-> nohup script.sh > mynohup.out 2>&1 &
+```nohup script.sh > mynohup.out 2>&1 &```
 
 its exactly mean --> **run script even when i log out the system**
 
@@ -818,7 +820,7 @@ send the data of that to a file named mynohup.out and also send all errors there
 
 we can kill this nohup too -->
 
-> kill %1
+```kill %1```
 
 (the number that find in jobs command)
 
@@ -832,7 +834,7 @@ it will kill process.
 
 but:
 
-> kill %2
+```kill %2```
 
  it will terminate the process ( does not forced the app ).
 
@@ -840,11 +842,11 @@ if we have 5 bg sleep command, and we wanna close them all
 
 we have to used:
 
->killall sleep
+```killall sleep```
 
 **Tip**: if we want to find process ID of apps that start in background we can use this commnad: 
 
-> jobs -l
+```jobs -l```
 
 -l switch means **Long**
 
@@ -854,19 +856,19 @@ we have to used:
 
 if we wanna check out all process those running in system, we could use:
 
-> ps -aux 
+```ps -aux ```
 
 will show all process in system
 
-> ps
+```ps```
 
 will show just running app in background not from whole system
 
-> ps -l 
+```ps -l``` 
 
 will show long data
 
-> ps -lf 
+```ps -lf``` 
 
 will show long data and full command
 
@@ -905,9 +907,9 @@ it used for find out how much memory is free !
 
 the famous switches for that are:
 
-> free -g
+```free -g```
 
-> free -m
+```free -m```
 
 **m** stands for **MB** and **g** stands for **GB**
 
@@ -917,7 +919,7 @@ the famous switches for that are:
 
 up time will show us how much time does system on.
 
-> uptime
+```uptime```
 
 <br>
 
@@ -935,7 +937,7 @@ if nice **-10** or negative it means this process is so unfriended and want to r
 
 **Tip**:  if we want to use a program or command and we want to use less cpu or kinda that's program not important too much, we can use command like this:
 
-> nice sleep 1000 &
+```nice sleep 1000 &```
 
 it means first use cpu for another process
 
@@ -945,17 +947,17 @@ if it is ok then use cpu for this sleep command !
 
 **n Switch**: 
 
->nice -n 19 sleep 1000 & 
+```nice -n 19 sleep 1000 & ```
 
 use the lowest level of cpu for this command
 
 now for example we run a program with nice command and now we wanna change the niceness of that --> we have to use :
 
-> sudo renice -n < process ID of that program >
+```sudo renice -n < process ID of that program >```
 
 we can also find process id with this command:
 
-> ps -lf
+```ps -lf```
 
 **Tip**: we can **increase** the priority (niceness) of process **without root permission**.
 
@@ -963,37 +965,37 @@ but we **can't decrease** priority (niceness) without sudo ( root permission ).
 
 **Tip**: we can also use something like this to find PID (process ID):
 
-> ps -lf | grep xeyes
+```ps -lf | grep xeyes```
 
 <br>
 
 ## REGULAR EXPRESSION
 
-> grep f friends.txt
+```grep f friends.txt```
 
 find all f characters in friends file:
 
-> grep a+ 
+```grep a+ ```
 
 means find a if a is one or more , but if there is no a it will not show anything
 
-> grep a* 
+```grep a* ```
 
 it means find a if a is zero or more.
 
 **Hint**: sometimes we need to use escape character to use regular expression truely, for instance:
  
- > grep a*
+```grep a*```
 
 will look for a and start in text 
 
 we have to use:
 
-> grep 'a*'
+```grep 'a*'```
 
 so we have a solution:
 
-> grep -E 'a*s' friends 
+```grep -E 'a*s' friends ```
 
 **-E** switch means **Extended** and **if we use this switch**, we **don't need to escape characters** anymore !
 
@@ -1012,15 +1014,15 @@ we can use ( egrep ) instead of (( grep -E ))
 
 if we want to find all names that includes a or b or c we have to use this command:
 
-> egrep '(a|b|c)' friends.txt
+```egrep '(a|b|c)' friends.txt```
 
 if we wanna find any character and after that a for example:
 
-> egrep ".a" friends.txt
+```egrep ".a" friends.txt```
 
  --> mi(n)a
 
-> egrep "[A-F]"
+```egrep "[A-F]"```
 
  --> find all character between A to F
 
@@ -1028,11 +1030,11 @@ if we want to find all a after any character ( it means second character must be
 
 we have to use this command:
 
-> egrep "^.a" friends.txt
+```egrep "^.a" friends.txt```
 
 if we use:
 
-> egrep "a$" friends.txt
+```egrep "a$" friends.txt```
 
 means **a** must be the last character
 
@@ -1042,7 +1044,7 @@ means **a** must be the last character
 
 hard example:
 
-> egrep "^ [a-h].*a$" friends.txt
+```egrep "^ [a-h].*a$" friends.txt```
 
 find all names that start with a-b-c-d-e-f-g-h and after that any character with any duplicate and finally end with (a).
 
@@ -1072,9 +1074,9 @@ David\$, what should we do ! we can't use egrep "\$\$" or egrep "d$"
 
 solution is:
 
-> fgrep or grep -F
+```fgrep or grep -F```
 
-> fgrep "d\$"
+```fgrep "d\$"```
 
  it exactly looks for d$ in names !
 
@@ -1084,18 +1086,18 @@ solution is:
 
  subsitute all a with b in friends.txt
  
-> sed "s/a/b/" friends.txt
-> 
-  -r is for understanding the REGEX
+```sed "s/a/b/" friends.txt```
+
+-r is for understanding the REGEX
   
-> sed -r "s/^a/b/" friends.txt
+```sed -r "s/^a/b/" friends.txt```
 
 it means subsitute all names start with a --> subsitute a with b
 
 **Tip**: we also can use sed to find something not only subsitute
 
 for instance:
-> sed -rn "/a/p" frieds.txt
+```sed -rn "/a/p" frieds.txt```
 
 **-rn switch**: **r** means **regex** and **n** means i dont want to show the final answer to me after doing something.
 
@@ -1103,7 +1105,7 @@ for instance:
 
 or we can use something like this:
 
-> sed -rn ".{5}/p" friends.txt
+```sed -rn ".{5}/p" friends.txt```
 
 it means find all five characters names and print them
 
@@ -1111,7 +1113,7 @@ but still this method find names with 6 characters or more
 
 if we want fix that we have to use:
 
-> sed -rn "^/.{5}$/p" friends.txt
+```sed -rn "^/.{5}$/p" friends.txt```
 
 <br>
 
@@ -1191,36 +1193,36 @@ use esc to enter command mode
 
 then use :
 
-> q!
+```q!```
 
  ( Quit editing without save )
 
-> :w!
+```:w!```
 
 (write the file (whether modified or not)) it means we can save file and still stand in it.
 
 ** Tip**: we also can save a file without change the original one with:
 
-> :w <name.txt> --> :w cute.txt
+```:w <name.txt> --> :w cute.txt```
 
 To reload file from disk when u fuck the real file :)):
 
-> :e!
+```:e!```
 
 using shell command:
-> :! ls
+```:! ls```
 
 <br>
 
 ## Partitions
 
-> fdisk -l /dev/sda
+```fdisk -l /dev/sda```
 
 l switch stands for list (will print data about our hard disks).
 
 **Tip**: fdisk is a dangerous command.
 
-> fdisk /dev/sda
+```fdisk /dev/sda```
 
 will open danger zone :))
 
@@ -1228,7 +1230,7 @@ we can format partition remove them or add them, change the format of them and e
 
 if we want to delete a partition:
 
-> sudo fdisk /dev/sda
+```sudo fdisk /dev/sda```
 
 **m** -> use for help.
 
@@ -1238,28 +1240,28 @@ if we want to delete a partition:
 
 for format a partition we have to use:
 
-> sudo mkfs -t ext4 -L Movies /dev/sda1
+```sudo mkfs -t ext4 -L Movies /dev/sda1```
 
 (Make File System 't' stands for TYPE --> ext4 --> L switch stands for Label
 
 but for format a partition for SWAP we have to use:
 
-> sudo mkswap /dev/sda1
+```sudo mkswap /dev/sda1```
 
 **Tip**: we can check all formates in our linux:
 
-> ls /sbin/mk*
+```ls /sbin/mk*```
 
 ### What is UUID:
 Universal Unique ID --> it's a id that always same and not changeable.
 
 check UUID of Hardware like Hard Disk:
 
-> blkid /dev/sda1
+```blkid /dev/sda1```
 
 for GPT system NOT MBR ---> we can use gdisk instead of fdisk
 
-> gdisk /dev/sda
+```gdisk /dev/sda```
 
 <br>
 
@@ -1268,15 +1270,15 @@ for GPT system NOT MBR ---> we can use gdisk instead of fdisk
 ### Disk Free
 df will show us "Disk Free" space:
 
-> df -h (-H)
+```df -h (-H)```
 
 h means human and H is also mean human too but -H is better because it calculate as 1024 not 1000.
 
-> df -TH
+```df -TH```
 
 Disk Free Space TYPE and Human Readable.
 
-> df -ih
+```df -ih```
 
  i means inode,  "Inodes keep some infromation about Files".
 
@@ -1284,7 +1286,7 @@ Disk Free Space TYPE and Human Readable.
 
 ### DISK USAGE
 
-> du -H . /tmp
+```du -H . /tmp```
 
  it will check the disk usage both the directory we stand and the /tmp directory.
 
@@ -1292,27 +1294,27 @@ important switches for "du" command:
 
 -c -h -H --max-depth=1 -s  -c means caclucalte the total disk usage.
 
-> du myProject/instabot -H -c
+```du myProject/instabot -H -c```
 
  will show us the total and also one by one files that used our disk.
 
-> du -H -C --max-depth=1
+```du -H -C --max-depth=1```
 
  this command won't show us all nested direcotories one by one instead of that it'll show just parent directory and usage of all childrens of that directory.
 
-> du -hs 
+```du -hs```
 
 will give us a summary human readable summary.
 
 for example :
 
-> du -hs myProject
+```du -hs myProject```
 
  (500MB)
 
 if we wanna find big files that used most of our usage -> we have to use sth like this bellow:
 
-> du -h --max-depth=2 | grep G M
+```du -h --max-depth=2 | grep G M```
 
  ( GB or MB Use one of them )
 
@@ -1332,17 +1334,17 @@ in that the contents of the journal can be used to reconstruct the state of the 
 
 ## Mount
 
-> sudo mount /dev/sda1 /media/mosihere/
+```sudo mount /dev/sda1 /media/mosihere/```
 
 it will mount hard sda1 in media/mosihere, it means if we have 2 linux in our hard drive the second linux mount in our main and in used linux --> (We Mount A Partition in a Directory).
 
 if we want to unmount this again:
 
-> umount /media/mosihere/
+```umount /media/mosihere/```
 
 or
 
-> sudoumount /dev/sda1
+```sudoumount /dev/sda1```
 
 **Tip**: it's better to mount stuffs in a empty directory, because when we mount things in a directory till we unmount that we can't see our real files and stuffs in directory.
 
@@ -1350,7 +1352,7 @@ famous switches for mount command are:
  1. -t ext4 (stands for type)
  2. -o ro ( o stands for options and ro means with READ ONLY option mount this **rw** means read and write.
 
-> sudo mount -o remount,ro /dev/sda1 /media/mosihere/
+```sudo mount -o remount,ro /dev/sda1 /media/mosihere/```
 
 it means mount with option and remount again if it already mounted and start it in read only mode.
 
@@ -1362,7 +1364,7 @@ we have to leave that directory then use --> sudo umount /dev/sda1
 
 **hint**:  mount command will show all mounted stuffs in our systems:
 
-> mount
+```mount```
 
 <br>
 
@@ -1370,17 +1372,17 @@ we have to leave that directory then use --> sudo umount /dev/sda1
 
 with command:
 
-> sudo swapon -a
+```sudo swapon -a```
 
 start our swap partition, also we can turn it off with:
 
-> sudo swapoff -a
+```sudo swapoff -a```
 
 **Tip**: we can check our memory usage and much more things with (top) command:
 
-> top
+```top```
 
-> swapon -s
+```swapon -s```
 
  will show us the partition of our swap, for example:
  
@@ -1392,14 +1394,14 @@ start our swap partition, also we can turn it off with:
 
 when we create a file if we use:
 
-> ls -l
+```ls -l```
 
  we can see the owner of file.
 
 group of user and another persons in system.
 
 something like this:
-> -wr-wr-r--
+```-wr-wr-r--```
 
 1. first wr means write and read for User (Me)
 2. second is for group (for example Mosihere Group )
@@ -1407,25 +1409,25 @@ something like this:
 
 ok ! now we want to create a shell.sh:
 
-> vim hello.sh
+```vim hello.sh```
 
-#!/bin/bash
+```#!/bin/bash```
 it'll be run with bin bash
 
-> echo 'hello'
+```echo 'hello'```
 
 now if we run it:
 
->sh hello.sh
+```sh hello.sh```
 
 now we wanna make it execute to run it we have to use:
 
-> chmod u+x hello.sh
+```chmod u+x hello.sh```
 
 it means give the permission to user to execute.
 
 now if we again use:
-> ls -l hello.sh
+```ls -l hello.sh```
 
 we'll see the output like this:
 
@@ -1433,27 +1435,27 @@ we'll see the output like this:
 
 and ofcourse now we can run the hello.sh directry in terminal like this :
 
-> ./hello.sh
+```./hello.sh```
 
 **Tip**: if we want to remove the access of user to execute we have to use this command:
 
->chmod u-x hello.sh
+```chmod u-x hello.sh```
 
  (remove the execute for user).
 
-> chmod ug+x hello.sh
+```chmod ug+x hello.sh```
 
  (change mod of user and group of user to access the execute)
 
-> chmod o-r hello.sh
+```chmod o-r hello.sh```
 
 (others don't have permission to read this file).
 
-> chmod o=wr hello.sh
+```chmod o=wr hello.sh```
 
 (it means add read and write for others)
 
-> chmod o=r,g=r,u=wrx hello.sh
+```chmod o=r,g=r,u=wrx hello.sh```
 
 (others can read , group can read, user can read and write and execute)
 
@@ -1477,26 +1479,26 @@ r-- 4
 
 chmod < number for user > < number for group > < number for others > hello.sh
 
-> chmod 754 hello.sh
+```chmod 754 hello.sh```
  
 (it means user can write read and execute/ group can read and execute / and others can just read).
 
 **Access mode**: sometimes we can access sth dangerous without permission like this:
 
-> ls -l /usr/bin/passwd
+```ls -l /usr/bin/passwd```
 
  we can see -rwsr-xr-x
 
 this **s** means SUID --> (Set User ID)
 
-> chmod u+s hello.sh
+```chmod u+s hello.sh```
  
  will set SUID for hello.sh.
 
 it means anyone run this command, the command run with user root, not that guy access.
 
 **Tip**: if you use this command:
-> ls -ld /tmp
+```ls -ld /tmp```
 
 (d switch is stands for directory, not the files in that directory) you'll see sth like this:
 
@@ -1519,7 +1521,7 @@ with set sticky bit we let users can't erase others directory and files.
 
 chown command will help us
 
-> chown mosi:adm hello.sh
+```chown mosi:adm hello.sh```
 
 (it means change the owner to mosi and the group is adm)
 
@@ -1527,7 +1529,7 @@ chown command will help us
 
 -R that stands for Recursive.
 
-> sudo chown -R mosihere:mosihere /home
+```sudo chown -R mosihere:mosihere /home```
 
 (it means change the owner of home and all directories files and sub directories to mosihere and the group is mosihere too).
 
@@ -1535,11 +1537,11 @@ chown command will help us
 
 ## Hard Link & Soft link
 
-> ls -i
+```ls -i```
 
 (will list our inodes)
 
-> ls -il
+```ls -il```
 
 (will list items and inodes of them)
 
@@ -1547,11 +1549,11 @@ when we copy a file with new name --> the inodes of them are different
 
 but if we exactly want to link 2 files and inodes of them are same too, we have to use **LN** command --> for example we want to copy file.txt to file2.txt --> inodes are different you can check with:
 
-> ls -li
+```ls -li```
 
 **solution**:
 
-> ln myfile.txt hardlink.txt
+```ln myfile.txt hardlink.txt```
  
  now ls -li will show both inodes same.
 
@@ -1568,15 +1570,15 @@ and third is link of original
 original.txt / 2-copy.txt / 3.hardlink.txt
 
 first we use:
-> cp original.txt copy.txt
+```cp original.txt copy.txt```
 
 then:
 
-> ln original.txt hardlink.txt
+```ln original.txt hardlink.txt```
 
 now if we write something instead of previous content of original file and cat the link.txt --> the hardlink.txt will update soon, but copy.txt still contain previous content.
 
-> unlink hardlink.txt
+```unlink hardlink.txt```
 
 will remove hardlink.txt.
 
@@ -1585,10 +1587,10 @@ we have to use -s Switch ( -s Stands for Soft Link )
 
 we can easily create a softLink like this bellow:
 
-> ln -s original.txt softLink.txt
+```ln -s original.txt softLink.txt```
 
 if we use:
-> ls -il
+```ls -il```
 
 we'll see a softLink.txt use a arrow to refer to original.txt and here is the point, the inodes are different.
 
@@ -1600,11 +1602,11 @@ in this situation we have to use softlink that create a new file with unique ino
 
 **Hint**: if we want to create a softlink in an inner directory, we have to use "Relative Path" --> it means full path look example bellow:
 
-> ln -s original.txt myDir/
+```ln -s original.txt myDir/```
 
 it will create a soft link file with in broken type --> it means it has error --> solution is:
 
-> ln -s ../original.txt .
+```ln -s ../original.txt .```
  
 it means create a softLink from outer directory with original.txt name and create it here where I'm stand.
 
@@ -1614,13 +1616,13 @@ we can't use hard link at all.
 
 so we can use sth like this -->we have a directory named myDir and etc...
 
-> ln -s myDir LinkedDir
+```ln -s myDir LinkedDir```
 
 it will create a LinkedDir and all data in myDir are also exist in LinkedDir.
 
 **Trick**:  we can find all files in system like this:
 
-> find / -type l 
+``` find / -type l ```
 
 find all files are softlink from root.
 
@@ -1666,21 +1668,21 @@ find all files are softlink from root.
 
 ## Tricks
 
-> which ls
+```which ls```
 
  will tell us how the command run.
 
-> which -a ping
+```which -a ping```
 
 stands for all path.
 
-> type root
+```type root```
 
  it's better than which.
 
-> whereis ping
+```whereis ping```
 
-> locate kernel 
+```locate kernel ```
 
 is too fast.
 
