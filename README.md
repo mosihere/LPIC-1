@@ -38,27 +38,29 @@
 ---
 
 Check the **details** of a file with:
-> ls -ltrh file_name
+```ls -ltrh file_name```
+
 ---
 
 Use to check the **format** of a file:
-> file file_name
+```file file_name```
+
 ---
 
 **Copy** a file: 
 
-> cp ~/Pictures/screenshot.png (optionally new_name_for_file) (destination)
+```cp ~/Pictures/screenshot.png (optionally new_name_for_file) (destination)```
 
 <br>
 Use this command to copy a file at the same place :
 
->  cp test.txt copyTest.txt 
+```cp test.txt copyTest.txt ```
 
 <br>
 
 We can also **copy multiple files** into another directory like below:
 
-> cp new newfile mostafa.txt myjob
+```cp new newfile mostafa.txt myjob```
  
  **Tip** -->  myjob is a **Directory**.
 
